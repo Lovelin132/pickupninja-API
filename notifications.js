@@ -4,7 +4,7 @@ const firebase = require('firebase-admin');
 var firestore = firebase.firestore()
 
 
-//add
+
 router.post('/add', async (req, res) => {
 	 
 		firestore.collection("notifications").add(req.body).then(()=>{;
@@ -16,7 +16,7 @@ router.post('/add', async (req, res) => {
 	
 })
 
-//get all
+
 router.get('/list',(req, res) => {
  firestore.collection("notifications").get().then(async(docs)=>{
 
