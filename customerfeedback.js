@@ -3,7 +3,7 @@ const router = express.Router();
 const functions = require("firebase-admin");
 const firestore = functions.firestore();
 
-//Add custrmerfeedback
+
 router.post("/feed", async (req, res) => {
     
     firestore.collection("feedback").add(req.body).then(() => {
@@ -13,7 +13,7 @@ router.post("/feed", async (req, res) => {
             res.send({ status: 300, msg: "data error", error: err })
         })
 })
-//get of feedback
+
 router.get("/feedbacklist", (req, res) => {
     firestore.collection("feedback").get().then(async (docs) => {
         let data = [];
@@ -29,7 +29,7 @@ router.get("/feedbacklist", (req, res) => {
             res.send({ status: 500, msg: "data error", error: err })
         })
 })
-//delete
+
 router.delete("/delete/:id", (req, res) => {
     firestore.collection("feedback").doc(req.params.id).delete(req.body).then((doc) => {
         res.send({ status: 200, msg: "data deleted" })
